@@ -1,9 +1,11 @@
 function int=arc_length(f,a0,b0,tol0)
-  int=0; n=1; a(1)=a0; b(1)=b0; tol(1)=tol0; app(1)=trap(f,a(1),b(1));
+  h = 1e-5;
+  g = @(t) fall(f,t,h);
+  int=0; n=1; a(1)=a0; b(1)=b0; tol(1)=tol0; app(1)=trap(g,a(1),b(1));
   while n>0
     % n is current position at end of the list
     c=(a(n)+b(n))/2; oldapp=app(n);
-    app(n)=trap(f,a(n),c);app(n+1)=trap(f,c,b(n));
+    app(n)=trap(g,a(n),c);app(n+1)=trap(g,c,b(n));
     if abs(oldapp-(app(n)+app(n+1)))<3*tol(n)
       int=int+app(n)+app(n+1);
       % success
@@ -22,3 +24,9 @@ end
 
 function s=trap(f,a,b)
 s=(f(a)+f(b))*(b-a)/2;
+
+function s=fall(f,t,h)
+vplus=f(t+h); vminus=f(t-h);
+dx=(vplus(1)-vminus(1))/(2*h);
+dy=(vplus(2)-vminus(2))/(2*h);
+s=sqrt(dx^2 + dy^2);
