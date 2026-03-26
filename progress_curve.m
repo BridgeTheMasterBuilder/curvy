@@ -1,4 +1,4 @@
-function progress_curve_length(f, s, C)
+function progress_curve(f, s, C)
     TOL = 0.001;
 
     c = C(s);
