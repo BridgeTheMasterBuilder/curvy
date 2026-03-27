@@ -13,7 +13,7 @@ n = 4;
 points = equipartition(dx, dy, n);
 
 for i=1:n-1
-    plot(xf(points(i)), yf(points(i)), '-o', 'MarkerSize',12)
+    plot(x(points(i)), y(points(i)), '-o', 'MarkerSize',12)
 end
 
 n = 20;
@@ -29,6 +29,6 @@ hold on;
 points = equipartition(dx, dy, n);
 
 for i=1:n-1
-    plot(xf(points(i)), yf(points(i)), '-o', 'MarkerSize',12)
+    plot(x(points(i)), y(points(i)), '-o', 'MarkerSize',12)
 end
 
