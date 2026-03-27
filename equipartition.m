@@ -1,13 +1,11 @@
-function equipartition(f, n)
+function points=equipartition(f, n)
     TOL = 0.001;
 
-    points=zeros(1,n);
+    points=zeros(1,n-1);
 
-    for i=1:n
-        s = 1/n * i;
+    for i=1:n-1
+        s = i/n;
 
         points(i) = path_length(f, s);
     end
-
-    points
         
