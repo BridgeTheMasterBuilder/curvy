@@ -1,8 +1,8 @@
-x = @(t) 0.5+0.3*t+3.9*t^2-4.7*t^3;
-y = @(t) 1.5+0.3*t+0.9*t^2-2.7*t^3;
+x = @(t) 2*cos(t*2*pi)-cos(4*t*pi);
+y = @(t) 2*sin(t*2*pi)-sin(4*t*pi);
 
-dx = @(t) 0.3+7.8*t-14.1*t^2;
-dy = @(t) 0.3+1.8*t-8.1*t^2;
+dx = @(t) -4*sin(t*2*pi)*pi+4*sin(4*t*pi)*pi;
+dy = @(t) 4*cos(t*2*pi)*pi-4*cos(4*t*pi)*pi;
 
 t = 0; 
 
@@ -10,7 +10,7 @@ figure;
 
 fplot(x, y, [0 1]);
 
-axis([0 1.5 0 2]);
+axis([-3.5 2.5 -3 3]);
 
 hold on;
 
@@ -31,7 +31,7 @@ figure;
 
 fplot(x, y, [0 1]);
 
-axis([0 1.5 0 2]);
+axis([-3.5 2.5 -3 3]);
 
 hold on;
 
