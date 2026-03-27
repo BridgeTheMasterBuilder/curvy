@@ -1,6 +1,0 @@
-function len=path_length(f, s)
-    TOL = 0.001;
-
-    g = @(x) (arc_length(f,0,x,TOL)/arc_length(f,0,1,TOL))-s;
-
-    len=bisect(g,0,1,TOL);

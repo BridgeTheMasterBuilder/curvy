@@ -10,7 +10,7 @@ hold on;
 
 n = 4;
 
-points = equipartition(dx, dy, n);
+points = equipartition_newton(dx, dy, n);
 
 for i=1:n-1
     plot(xf(points(i)), yf(points(i)), '-o', 'MarkerSize',12)
@@ -26,7 +26,7 @@ axis([0 1.5 0 2]);
 
 hold on;
 
-points = equipartition(dx, dy, n);
+points = equipartition_newton(dx, dy, n);
 
 for i=1:n-1
     plot(xf(points(i)), yf(points(i)), '-o', 'MarkerSize',12)
