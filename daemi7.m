@@ -1,23 +1,113 @@
-P = @(t) [0.5+0.3*t+3.9*t^2-4.7*t^3, 1.5+0.3*t+0.9*t^2-2.7*t^3];
+x = @(t) 0.5+0.3*t+3.9*t^2-4.7*t^3;
+y = @(t) 1.5+0.3*t+0.9*t^2-2.7*t^3;
 
-s = 0.5;
+dx = @(t) 0.3+7.8*t-14.1*t^2;
+dy = @(t) 0.3+1.8*t-8.1*t^2;
 
-C = @(s) s^(1/3);
+t = 0; 
 
-progress_curve(P, s, C)
+figure;
 
-C = @(s) s^2;
+fplot(x, y, [0 1]);
 
-progress_curve(P, s, C)
+axis([0 1.5 0 2]);
 
-C = @(s) sin(s*pi/2);
+hold on;
 
-progress_curve(P, s, C)
+ball = line('Color','r','Marker','o','MarkerSize',10,'LineWidth',2,'XData',[],'YData',[]);
 
-C = @(s) 1/2+(1/2)*sin(2*s-1)*pi/2;
+s = 0.01;
 
-progress_curve(P, s, C)
+while s <= 1
+    C = @(s) s^(1/3);
+    t_s = t_star(dx,dy,C(s));
+    
+    xt = x(t_s);
+    yt = y(t_s);
 
-C = @(s) s;
+    set(ball, 'XData', xt, 'YData', yt); 
+    drawnow; 
+    pause(0.01);
 
-progress_curve(P, s, C)
+    s = s + 0.01;
+end
+
+figure;
+
+fplot(x, y, [0 1]);
+
+axis([0 1.5 0 2]);
+
+hold on;
+
+ball = line('Color','r','Marker','o','MarkerSize',10,'LineWidth',2,'XData',[],'YData',[]);
+
+s = 0.01;
+
+while s <= 1
+    C = @(s) s^2;
+    t_s = t_star(dx,dy,C(s));
+    
+    xt = x(t_s);
+    yt = y(t_s);
+
+    set(ball, 'XData', xt, 'YData', yt); 
+    drawnow; 
+    pause(0.01);
+
+    s = s + 0.01;
+end
+
+figure;
+
+fplot(x, y, [0 1]);
+
+axis([0 1.5 0 2]);
+
+hold on;
+
+ball = line('Color','r','Marker','o','MarkerSize',10,'LineWidth',2,'XData',[],'YData',[]);
+
+s = 0.01;
+
+while s <= 1
+    C = @(s) sin(s*pi/2);
+    t_s = t_star(dx,dy,C(s));
+    
+    xt = x(t_s);
+    yt = y(t_s);
+
+    set(ball, 'XData', xt, 'YData', yt); 
+    drawnow; 
+    pause(0.01);
+
+    s = s + 0.01;
+end
+
+figure;
+
+fplot(x, y, [0 1]);
+
+axis([0 1.5 0 2]);
+
+hold on;
+
+ball = line('Color','r','Marker','o','MarkerSize',10,'LineWidth',2,'XData',[],'YData',[]);
+
+s = 0.01;
+
+while s <= 1
+    C = @(s) 1/2+(1/2)*sin((2*s-1)*pi/2);
+    t_s = t_star(dx,dy,C(s));
+    
+    xt = x(t_s);
+    yt = y(t_s);
+
+    set(ball, 'XData', xt, 'YData', yt); 
+    drawnow; 
+    pause(0.01);
+
+    s = s + 0.01;
+end
+
+
